@@ -1,0 +1,31 @@
+@model List<NoteApp.Models.Note> 
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Index</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>CreatedAt</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var note in Model)
+        {
+            <tr>
+                <td>@note.Title</td>
+                <td>@note.Description</td>
+                <td>@note.CreatedAt</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@note.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@note.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    <a asp-action="Create" class="btn btn-primary">Add a new note</a>
